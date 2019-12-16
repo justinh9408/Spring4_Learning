@@ -12,5 +12,6 @@ public class Main {
         //2.从ioc容器中获取bean实例
         HelloWorld helloWorld = (HelloWorld) ctx.getBean("helloWorld2");
         helloWorld.hello();
+//        d
     }
 }
