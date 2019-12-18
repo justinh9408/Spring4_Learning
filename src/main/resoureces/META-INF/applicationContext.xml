@@ -2,7 +2,72 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="helloWorld2" class="com.spring4.Controller.HelloWorld">
+    <bean id="helloWorld2" class="com.spring4.HelloWorld">
         <property name="name" value="spring"></property>
     </bean>
+    <bean id="car" class="com.spring4.Car">
+        <constructor-arg type="java.lang.String">
+            <!--特殊字符-->
+            <!--value可以以子节点的形式写入-->
+            <value><![CDATA[<Audit>]]></value>
+        </constructor-arg>
+        <constructor-arg value="10000" type="int"></constructor-arg>
+        <constructor-arg value="200" type="int"></constructor-arg>
+    </bean>
+
+    <bean id="car2" class="com.spring4.Car">
+        <constructor-arg type="java.lang.String">
+            <value><![CDATA[<Ford>]]></value>
+        </constructor-arg>
+        <constructor-arg value="2000" type="int"></constructor-arg>
+        <constructor-arg value="300" type="int"></constructor-arg>
+    </bean>
+
+    <bean id="person" class="com.spring4.Person">
+        <property name="name" value="Justin"></property>
+        <property name="age" value="22"></property>
+        <!--ref引用其他bean-->
+        <property name="car" ref="car"></property>
+<!--        <property name="car">-->
+<!--            <ref bean="car"></ref>-->
+<!--        </property>-->
+    </bean>
+
+    <bean id="person2" class="com.spring4.Person">
+        <property name="name" value="Justin"></property>
+        <property name="age" value="22"></property>
+        <!-- 内部bean不能被外部引用的-->
+        <property name="car">
+            <bean class="com.spring4.Car">
+                <constructor-arg value="Ford" type="java.lang.String"></constructor-arg>
+                <constructor-arg value="2000" type="int"></constructor-arg>
+                <constructor-arg value="100" type="int"></constructor-arg>
+            </bean>
+        </property>
+        <!-- 级联属性赋值 -->
+        <property name="car.price" value="1111"></property>
+    </bean>
+
+    <bean id="person3" class="com.spring4.Collections.Person">
+        <property name="name" value="Huang"></property>
+        <property name="age" value="23"></property>
+        <property name="cars">
+            <list>
+                <ref bean="car"></ref>
+                <ref bean="car2"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="newPerson" class="com.spring4.Collections.NewPerson">
+        <property name="name" value="Jiecong"></property>
+        <property name="age" value="25"></property>
+        <property name="cars">
+            <map>
+                <entry key="AA" value-ref="car"></entry>
+                <entry key="BB" value-ref="car2"></entry>
+            </map>
+        </property>
+    </bean>
+
 </beans>

@@ -1,11 +1,12 @@
-package com.spring4.Controller;
+package com.spring4.Collections;
 
+import com.spring4.Car;
+import com.spring4.Collections.Person;
+import com.spring4.HelloWorld;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.Date;
 
 @Configuration
 @ComponentScan
@@ -15,9 +16,9 @@ public class Main {
 
         //1.创建spring的ioc容器对象
         ApplicationContext ctx = new ClassPathXmlApplicationContext("META-INF/applicationContext.xml");
-        //2.从ioc容器中获取bean实例
-        HelloWorld helloWorld = (HelloWorld) ctx.getBean("helloWorld2");
-        helloWorld.hello();
-
+        Person person = (Person) ctx.getBean("person3");
+        System.out.println(person);
+        NewPerson newPerson = (NewPerson) ctx.getBean("newPerson");
+        System.out.println(newPerson);
     }
 }

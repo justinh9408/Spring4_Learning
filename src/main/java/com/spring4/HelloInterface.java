@@ -1,4 +1,4 @@
-package com.spring4.Controller;
+package com.spring4;
 
 public interface HelloInterface {
     void hello();

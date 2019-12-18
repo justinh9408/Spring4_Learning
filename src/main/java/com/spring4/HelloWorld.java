@@ -1,13 +1,12 @@
-package com.spring4.Controller;
+package com.spring4;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.ComponentScan;
+import com.spring4.Decorator.Cold;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-
 @Component
+@Cold
+@Scope()
 public class HelloWorld implements HelloInterface{
 
     public HelloWorld() {
@@ -24,5 +23,12 @@ public class HelloWorld implements HelloInterface{
     public void hello() {
         System.out.print("hello world");
 
+    }
+
+    @Override
+    public String toString() {
+        return "HelloWorld{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }
