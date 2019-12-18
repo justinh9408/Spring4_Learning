@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context-2.5.xsd
+                            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <context:property-placeholder location="db.properties"></context:property-placeholder>
+
     <bean id="helloWorld2" class="com.spring4.HelloWorld">
         <property name="name" value="spring"></property>
     </bean>
@@ -59,6 +68,21 @@
         </property>
     </bean>
 
+    <util:list id="carList">
+        <ref bean="car"></ref>
+        <ref bean="car2"></ref>
+    </util:list>
+
+    <bean id="person4" class="com.spring4.Person" p:age="26" p:name="p" p:car-ref="car"></bean>
+
+    <bean id="person5" class="com.spring4.Collections.Person" p:name="newHuang" p:age="26" p:cars-ref="carList"></bean>
+
+    <bean id="person6" class="com.spring4.Collections.Person" p:name="newHuang" p:age="26" autowire="byType"></bean>
+
+    <bean id="abstract" class="com.spring4.Collections.Person" p:age="#{1e4}" abstract="true"></bean>
+
+    <bean id="person7" scope="singleton" class="com.spring4.Collections.Person" p:name="${name}" parent="abstract" autowire="byType"></bean>
+
     <bean id="newPerson" class="com.spring4.Collections.NewPerson">
         <property name="name" value="Jiecong"></property>
         <property name="age" value="25"></property>
@@ -68,6 +92,9 @@
                 <entry key="BB" value-ref="car2"></entry>
             </map>
         </property>
+
     </bean>
+
+    <bean class="com.spring4.MyBeanProcessor"></bean>
 
 </beans>

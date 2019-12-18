@@ -18,7 +18,11 @@ public class Main {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("META-INF/applicationContext.xml");
         Person person = (Person) ctx.getBean("person3");
         System.out.println(person);
-        NewPerson newPerson = (NewPerson) ctx.getBean("newPerson");
+        Person newPerson = (Person) ctx.getBean("person5");
         System.out.println(newPerson);
+        Person person6 = (Person) ctx.getBean("person6");
+        System.out.println(person6);
+        Person person7 = (Person) ctx.getBean("person7");
+        System.out.println(person7);
     }
 }

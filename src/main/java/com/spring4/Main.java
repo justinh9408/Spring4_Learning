@@ -18,7 +18,8 @@ public class Main {
 //        helloWorld.hello();
         Car car = (Car) ctx.getBean("car");
         System.out.println(car);
-        Person person = (Person) ctx.getBean("person2");
+        Person person = (Person) ctx.getBean("person4");
         System.out.println(person);
+        
     }
 }
