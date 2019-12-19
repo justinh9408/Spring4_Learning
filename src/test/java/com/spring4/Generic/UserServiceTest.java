@@ -25,4 +25,5 @@ public class UserServiceTest {
     public void test(){
         baseService.add();
     }
+
 }

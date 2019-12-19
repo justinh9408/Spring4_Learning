@@ -15,10 +15,9 @@ public class SpeakerImp implements SpeakerInterface {
         this.hello = hello;
     }
 
-
-
     @Override
     public void say() {
         hello.hello();
     }
+
 }

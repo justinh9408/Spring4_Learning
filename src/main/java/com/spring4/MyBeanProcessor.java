@@ -14,4 +14,5 @@ public class MyBeanProcessor implements BeanPostProcessor {
     public Object postProcessAfterInitialization(Object o, String s) throws BeansException {
         return o;
     }
+
 }
