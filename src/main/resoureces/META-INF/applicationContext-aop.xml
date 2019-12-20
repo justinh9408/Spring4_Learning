@@ -16,4 +16,14 @@
     <context:component-scan base-package="com.spring4.AOP"></context:component-scan>
 
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+
+    <bean id="ValidateAspect" class="com.spring4.AOP.ValidateAspect"></bean>
+
+    <aop:config>
+        <aop:pointcut id="pointCut" expression="execution(* com.spring4.AOP.*.*(..))"/>
+        <aop:aspect ref="ValidateAspect" order="2">
+            <aop:before method="validateBefore" pointcut-ref="pointCut"></aop:before>
+        </aop:aspect>
+    </aop:config>
 </beans>
