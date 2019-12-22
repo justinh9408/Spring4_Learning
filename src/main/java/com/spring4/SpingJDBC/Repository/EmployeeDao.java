@@ -7,6 +7,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
+
 /**
  * @Classname EmployeeDao
  * @Description TODO
@@ -16,8 +18,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class EmployeeDao {
 
-    @Autowired
     JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public void setJdbcTemplate(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
 
     public Employee getEmployee(int id){
         String sql = "SELECT id, name, email, age FROM Employee WHERE id = ?";

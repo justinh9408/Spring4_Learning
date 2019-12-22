@@ -1,6 +1,7 @@
 package com.spring4;
 
 import com.spring4.Decorator.Cold;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,6 +12,7 @@ public class HelloWorld implements HelloInterface{
         System.out.println("constructing...");
     }
 
+    @Value("${hello.name}")
     public String name;
 
     public void setName(String name) {
@@ -18,7 +20,7 @@ public class HelloWorld implements HelloInterface{
     }
 
     public void hello() {
-        System.out.print("hello world");
+        System.out.println("hello " + name);
 
     }
 

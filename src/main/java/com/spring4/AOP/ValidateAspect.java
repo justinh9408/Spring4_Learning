@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
  * @Created by Justin
  */
 public class ValidateAspect {
-
     public void validateBefore(){
         System.out.println("Validate before method....");
     }

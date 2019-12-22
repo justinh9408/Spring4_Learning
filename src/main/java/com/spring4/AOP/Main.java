@@ -1,5 +1,7 @@
 package com.spring4.AOP;
 
+import com.spring4.App;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,6 +12,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @Created by Justin
  */
 public class Main {
+
+    @Autowired
+    App app;
 
     public static void main(String[] args) {
 

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
+
 /**
  * @Classname BookDaoImpl
  * @Description TODO
@@ -15,8 +17,12 @@ import org.springframework.stereotype.Repository;
 @Repository("BookDao")
 public class BookDaoImpl implements BookDao {
 
-    @Autowired
     JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public void setJdbcTemplate(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
 
     @Override
     public int findByIsbn(int isbn) {
