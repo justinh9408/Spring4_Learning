@@ -14,6 +14,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import static sun.plugin.javascript.navig.JSType.URL;
@@ -28,6 +29,8 @@ import static sun.plugin.javascript.navig.JSType.URL;
                 @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = {BookService.class})
         })
 })
+@EnableAspectJAutoProxy
+@EnableTransactionManagement
 @PropertySource("db.properties")
 @Import(App.class)
 public class Main {
@@ -35,7 +38,7 @@ public class Main {
     @Autowired
     Environment environment;
 
-    
+
     @Scope("singleton")
     @Bean
     DataSource dataSource(@Value("${PASSWORD}")String pwd){
