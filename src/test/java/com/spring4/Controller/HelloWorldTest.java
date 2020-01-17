@@ -9,6 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -16,14 +18,14 @@ import static org.junit.Assert.*;
 public class HelloWorldTest {
 
     @Autowired
-    private HelloInterface helloWorld;
+    private List<HelloInterface> helloWorlds;
 
 
     @Test
     public void notNull(){
-        assertNotNull(helloWorld);
-        helloWorld.setName("justin");
-        helloWorld.hello();
+        for (HelloInterface helloInterface: helloWorlds) {
+            System.out.println(helloInterface);
+        }
     }
 
 
